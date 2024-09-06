@@ -1,0 +1,59 @@
+//Given an array of integers, write a function that returns true if there is a triplet (a, b, c) that satisfies a2 + b2 = c2.
+= {3, 1, 4, 6, 5} 
+: True,  There is a Pythagorean triplet (3, 4, 5).
+= {10, 4, 6, 12, 5} 
+: False, There is no Pythagorean triplet.
+-->
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+    public static boolean hasPythagoreanTriplet(int[] arr) {
+        int n = arr.length;
+
+        if (n < 3) {
+            return false;
+        }
+
+        int[] squares = new int[n];
+        for (int i = 0; i < n; i++) {
+            squares[i] = arr[i] * arr[i];
+        }
+        Arrays.sort(squares);
+
+        for (int k = n - 1; k >= 2; k--) {
+            int c2 = squares[k];
+            int i = 0;
+            int j = k - 1;
+            while (i < j) {
+                int sum = squares[i] + squares[j];
+                if (sum == c2) {
+                    return true;
+                } else if (sum < c2) {
+                    i++;
+                } else {
+                    j--;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of elements: ");
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+
+        System.out.println("Enter the elements:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        System.out.println("Pythagorean Triplet Exists: " + hasPythagoreanTriplet(arr));
+
+        scanner.close();
+    }
+}
