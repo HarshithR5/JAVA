@@ -1,0 +1,39 @@
+// Ask user for a positive integer N as input and then construct the pyramid using the sample given below and output should contain N lines.
+Suppose N = 7, output should be
+1
+232
+34543
+4567654
+567898765
+67890109876
+7890123210987
+-->
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a positive integer N: ");
+        int N = scanner.nextInt();
+
+        for (int i = 1; i <= N; i++) {
+            for (int j = 1; j <= N - i; j++) {
+                System.out.print(" ");
+            }
+
+            for (int j = i; j < 2 * i; j++) {
+                System.out.print(j);
+            }
+
+            for (int j = 2 * i - 2; j >= i; j--) {
+                System.out.print(j);
+            }
+
+            System.out.println();
+        }
+
+        scanner.close();
+    }
+}
