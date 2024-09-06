@@ -1,0 +1,23 @@
+// Determine how many two wheelers and four wheelers can be manufactured given total number of vehicles and total wheels as input.
+-->
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the total number of vehicles: ");
+        int totalVehicles = scanner.nextInt();
+
+        System.out.print("Enter the total number of wheels: ");
+        int totalWheels = scanner.nextInt();
+
+        int fourWheelers = (totalWheels - 2 * totalVehicles) / 2;
+        int twoWheelers = totalVehicles - fourWheelers;
+
+        System.out.println("Two Wheelers = " + twoWheelers);
+        System.out.println("Four Wheelers = " + fourWheelers);
+
+        scanner.close();
+    }
+}
