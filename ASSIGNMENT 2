@@ -1,0 +1,33 @@
+//How much do you pay an auto rickshaw? There is a fixed minimum charge of Rs. 35 which takes you the first 1.6 km. After that every km and part there of is charged at Rs.10 per km. Waiting charges are at Rs 1 per minute and luggage charges are at Rs 5 per 10kg
+-->
+import java.util.Scanner;
+
+public class Main {
+
+    public static double calculateFare(double distance, int waitingTime, double luggageWeight) {
+        double fare = 35;
+        if (distance > 1.6) {
+            fare += Math.ceil(distance - 1.6) * 10;
+        }
+        fare += waitingTime;
+        fare += Math.ceil(luggageWeight / 10) * 5;
+        return fare;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter distance (km): ");
+        double distance = scanner.nextDouble();
+
+        System.out.print("Enter waiting time (minutes): ");
+        int waitingTime = scanner.nextInt();
+
+        System.out.print("Enter luggage weight (kg): ");
+        double luggageWeight = scanner.nextDouble();
+
+        double totalFare = calculateFare(distance, waitingTime, luggageWeight);
+        System.out.println("Total fare: Rs. " + totalFare);
+        scanner.close();
+    }
+}
